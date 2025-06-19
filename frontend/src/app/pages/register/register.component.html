@@ -1,0 +1,19 @@
+<div class="page-wrapper">
+<div class="logo"><img src='assets/logo.png' alt="Red Product Logo">RED PRODUCT</div>
+<form (ngSubmit)="register()" class="form">
+  <h2>Inscrivez-vous en tant que Admin</h2>
+
+  <input type="text" placeholder="Nom" [(ngModel)]="name" name="name" required />
+  <input type="email" placeholder="E-mail" [(ngModel)]="email" name="email" required />
+  <input type="password" placeholder="Mot de passe" [(ngModel)]="password" name="password" required />
+
+  <label class="checkbox">
+    <input type="checkbox" [(ngModel)]="termsAccepted" name="terms" required />
+    Accepter les termes et la politique
+  </label>
+
+  <button type="submit">S'inscrire</button>
+
+  <p>Vous avez déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+</form>
+</div>

@@ -1,0 +1,41 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [CommonModule, RouterModule,],
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
+})
+export class SidebarComponent implements OnInit {
+  userName: string = 'Admin'; // Valeur par défaut
+  userStatus: string = 'en ligne';
+  userProfilePic: string = 'data:image/jpeg;base64,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'; // Chemin vers une image par défaut
+
+navItems = [
+
+  { 
+    label: 'Dashboard', 
+    iconImage: 'assets/list.png', 
+    route: '/dashboard' 
+  },
+  { 
+    label: 'Liste des hôtels', 
+    iconImage: 'assets/dashboarda.png', 
+    route: '/hotels' 
+  }
+];
+  constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    // Récupère les données de l'utilisateur connecté
+    const userData = this.authService.getUserData();
+    if (userData) {
+      this.userName = userData.name || 'Admin';
+      // Vous pouvez aussi mettre à jour userStatus et userProfilePic si disponibles
+    }
+  }
+}

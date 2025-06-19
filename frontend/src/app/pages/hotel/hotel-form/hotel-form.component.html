@@ -1,0 +1,92 @@
+<div class="hotel-form-container">
+  <h2>Ajouter un nouvel hôtel</h2>
+  
+  <form [formGroup]="hotelForm" (ngSubmit)="onSubmit()" class="hotel-form">
+    <!-- Champ Nom -->
+    <div class="form-group">
+      <label for="nom_de_l_hotel">Nom de l'hôtel *</label>
+      <input type="text" id="nom_de_l_hotel" formControlName="nom_de_l_hotel">
+      <div class="error" *ngIf="hotelForm.get('nom_de_l_hotel')?.invalid && hotelForm.get('nom_de_l_hotel')?.touched">
+        Ce champ est requis
+      </div>
+    </div>
+
+    <!-- Champ Adresse -->
+    <div class="form-group">
+      <label for="adresse">Adresse *</label>
+      <input type="text" id="adresse" formControlName="adresse">
+      <div class="error" *ngIf="hotelForm.get('adresse')?.invalid && hotelForm.get('adresse')?.touched">
+        Ce champ est requis
+      </div>
+    </div>
+
+    <!-- Champ Email -->
+    <div class="form-group">
+      <label for="email">Email *</label>
+      <input type="email" id="email" formControlName="email">
+      <div class="error" *ngIf="hotelForm.get('email')?.invalid && hotelForm.get('email')?.touched">
+        <span *ngIf="hotelForm.get('email')?.errors?.['required']">Ce champ est requis</span>
+        <span *ngIf="hotelForm.get('email')?.errors?.['email']">Email invalide</span>
+      </div>
+    </div>
+
+    <!-- Champ Téléphone -->
+    <div class="form-group">
+      <label for="numero_de_telephone">Téléphone *</label>
+      <input type="text" id="numero_de_telephone" formControlName="numero_de_telephone">
+      <div class="error" *ngIf="hotelForm.get('numero_de_telephone')?.invalid && hotelForm.get('numero_de_telephone')?.touched">
+        Ce champ est requis
+      </div>
+    </div>
+
+    <!-- Champ Prix et Devise -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="prix_par_nuit">Prix par nuit *</label>
+        <input type="number" id="prix_par_nuit" formControlName="prix_par_nuit" min="0">
+        <div class="error" *ngIf="hotelForm.get('prix_par_nuit')?.invalid && hotelForm.get('prix_par_nuit')?.touched">
+          <span *ngIf="hotelForm.get('prix_par_nuit')?.errors?.['required']">Ce champ est requis</span>
+          <span *ngIf="hotelForm.get('prix_par_nuit')?.errors?.['min']">Le prix doit être positif</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="devise">Devise</label>
+        <select id="devise" formControlName="devise">
+          <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Upload Photo -->
+    <div class="form-group">
+      <label for="photo">Photo de l'hôtel</label>
+      <input type="file" id="photo" (change)="onFileSelected($event)" accept="image/*">
+      
+      <div class="image-preview-container" *ngIf="previewUrl">
+        <div class="image-preview">
+          <img [src]="previewUrl" alt="Aperçu de la photo">
+          <button type="button" class="remove-image-btn" (click)="removeImage()">
+            × Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message d'erreur -->
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Boutons -->
+    <div class="form-actions">
+      <button type="button" class="cancel-btn" (click)="router.navigate(['/hotels'])">
+        Annuler
+      </button>
+      <button type="submit" class="submit-btn" [disabled]="hotelForm.invalid || isSubmitting">
+        <span *ngIf="!isSubmitting">Créer l'hôtel</span>
+        <span *ngIf="isSubmitting">En cours...</span>
+      </button>
+    </div>
+  </form>
+</div>

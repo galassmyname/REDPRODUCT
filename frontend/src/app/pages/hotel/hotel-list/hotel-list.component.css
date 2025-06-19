@@ -1,0 +1,127 @@
+
+.hotel-list-container {
+  padding: 2rem;
+  margin-left: 250px;
+  width: calc(100% - 250px); /* Ajuste la largeur pour compenser la sidebar */
+  
+}
+
+.header {
+  display: flex;
+  justify-content: space-between; /* h1 à gauche, bouton à droite */
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.create-btn {
+  padding: 0.5rem 1rem;
+  background-color: #e8e5e5;
+  color: rgb(15, 14, 14);
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 700px;
+}
+
+.hotel-grid {
+  display: flex;
+  flex-wrap: wrap; /* Permet le retour à la ligne automatique */
+  gap: 1.5rem;
+  margin-left: 0;
+  padding: 1rem;
+}
+
+/* Assure que les cartes s'affichent en ligne */
+.hotel-card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  cursor: pointer;
+  width: 300px; /* Largeur fixe pour forcer l'affichage en ligne */
+  flex: 0 0 auto; /* Empêche le redimensionnement automatique */
+}
+
+.hotel-card:hover {
+  transform: translateY(-5px);
+}
+
+.hotel-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.hotel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 1rem;
+}
+
+.hotel-name {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.hotel-address {
+  color: #010101;
+  margin-bottom: 0.5rem;
+}
+
+.hotel-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hotel-price {
+  font-weight: bold;
+  color: #000000;
+}
+
+.hotel-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.btn-details,
+.btn-delete {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-details:hover {
+  background-color: #0c0d0e;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .hotel-list-container {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .hotel-card {
+    width: 100%; /* Une carte par ligne sur mobile */
+  }
+}

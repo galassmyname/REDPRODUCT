@@ -1,0 +1,82 @@
+.dashboard-main-content {
+  padding: 2rem;
+  margin-left: 250px; /* Largeur de la sidebar */
+  width: calc(100% - 250px);
+}
+
+.dashboard-header-section {
+  margin-bottom: 2rem;
+}
+
+
+
+.welcome-header {
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonnes côte à côte */
+  gap: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 120px; /* Hauteur minimale pour uniformité */
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: white;
+  background-color: #6c5ce7;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* Specific icon background colors */
+.icon-form { background-color: #a29bfe; }
+.icon-messages { background-color: #00b894; }
+.icon-users { background-color: #fdcb6e; }
+.icon-emails { background-color: #d63031; }
+.icon-hotels { background-color: #6c5ce7; }
+.icon-entities { background-color: #0984e3; }
+
+.card-content {
+  flex-grow: 1; /* Allow content to take remaining space */
+}
+
+.card-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.25rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 0.25rem;
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  color: #888;
+}

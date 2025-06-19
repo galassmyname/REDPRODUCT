@@ -1,0 +1,93 @@
+/* Fond général */
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #494C4F;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Conteneur principal */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logo */
+.logo {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  gap: 10px;
+}
+
+/* Conteneur du formulaire (fond blanc) */
+.form-container {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ... (le reste du CSS reste inchangé) ... */
+
+/* Liens en dehors du fond blanc */
+.external-links {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.external-links a {
+  color: #ffff25;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.external-links a:hover {
+  text-decoration: underline;
+}
+
+.register-link {
+  color: white;
+  margin-top: 0.5rem;
+}
+
+/* Styles du formulaire */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input, button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+button {
+  background-color: #555;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.status-message {
+  text-align: center;
+  color: #ffff25;
+  margin-top: 1rem;
+}

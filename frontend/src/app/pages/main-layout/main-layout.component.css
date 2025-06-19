@@ -1,0 +1,85 @@
+/* Structure principale */
+.main-layout {
+  display: flex;
+  min-height: 100vh; /* Prend toute la hauteur de l'écran */
+  background-color: #f5f5f5; /* Fond légèrement gris */
+}
+
+/* Zone de contenu (à droite de la sidebar) */
+.content-area {
+  flex-grow: 1; /* Occupe l'espace restant */
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Organisation verticale */
+}
+
+/* En-tête */
+.main-header {
+  display: flex;
+  justify-content: flex-end; /* Alignement à droite */
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0; /* Ligne de séparation */
+}
+
+/* Conteneur des icônes */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espacement entre les éléments */
+}
+
+/* Style des icônes SVG */
+.notification-icon, 
+.logout-icon {
+  transition: transform 0.2s ease; /* Animation subtile */
+  cursor: pointer;
+}
+
+.notification-icon:hover {
+  transform: scale(1.1); /* Légère mise en échelle */
+}
+
+.logout-icon:hover {
+  fill: #ff0000; /* Rouge plus vif au survol */
+}
+
+/* Badge de notification */
+.badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff5722;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Photo de profil */
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+/* Indicateur en ligne (point vert) */
+.online-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+/* Positionnement relatif pour les éléments absolus */
+.notification, 
+.user-profile {
+  position: relative;
+}

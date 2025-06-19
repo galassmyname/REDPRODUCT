@@ -1,0 +1,61 @@
+<div class="hotel-list-container">
+  <div class="header">
+    <h1>Liste des hôtels</h1>
+    <button class="create-btn" routerLink="/hotels/new">
+      + Créer un nouveau hôtel
+    </button>
+  </div>
+
+  <div *ngIf="isLoading" class="loading-message">
+    Chargement en cours...
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <div *ngIf="!isLoading && !errorMessage">
+    <div class="hotel-grid">
+      <div class="hotel-card" *ngFor="let hotel of hotels" 
+           [class.expanded]="expandedHotelId === hotel._id"
+           (click)="toggleHotelDetails(hotel._id)">
+        
+        <div class="hotel-basic-info">
+          <div class="hotel-image">
+            <img 
+              [src]="getHotelImage(hotel)" 
+              alt="{{ hotel.nom_de_l_hotel }}"
+              (error)="onImageError($event)">
+          </div>
+          <div class="hotel-info">
+            <h3 class="hotel-name">{{ hotel.nom_de_l_hotel }}</h3>
+            <p class="hotel-address">{{ hotel.adresse }}</p>
+            <div class="hotel-meta">
+              <span class="hotel-price">{{ hotel.prix_par_nuit }} {{ hotel.devise || 'XOF' }} par nuit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Détails supplémentaires qui s'affichent quand l'hôtel est développé -->
+        <div *ngIf="expandedHotelId === hotel._id" class="hotel-details">
+          <div class="detail-row">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value">{{ hotel.email }}</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Téléphone:</span>
+            <span class="detail-value">{{ hotel.numero_de_telephone }}</span>
+          </div>
+          
+          <div class="hotel-actions">
+            <button class="btn-delete" (click)="deleteHotel(hotel._id, $event)">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="hotels.length === 0" class="empty-message">
+      Aucun hôtel disponible
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="page-wrapper">
+  <!-- Logo RED PRODUCT -->
+  <div class="logo"><img src='assets/logo.png' alt="Red Product Logo">RED PRODUCT</div>
+
+  <!-- Conteneur blanc pour le formulaire -->
+  <div class="form-container">
+    <ng-container [ngSwitch]="view">
+      <!-- Vue Connexion -->
+      <form *ngSwitchCase="'login'" (ngSubmit)="login($event)">
+        <h2>Connectez-vous en tant que Admin</h2>
+        <input [(ngModel)]="email" name="email" placeholder="Email" type="email" required>
+        <input [(ngModel)]="password" name="password" placeholder="Mot de passe" type="password" required>
+        <button type="submit">Se connecter</button>
+      </form>
+
+      <!-- Vue Mot de passe oublié -->
+      <form *ngSwitchCase="'forgot'" (ngSubmit)="sendResetLink()">
+        <h2>Mot de passe oublié</h2>
+        <input [(ngModel)]="email" name="email" placeholder="Votre email" type="email" required>
+        <button type="submit">Envoyer le lien</button>
+      </form>
+
+      <!-- Vue Réinitialisation -->
+      <form *ngSwitchCase="'reset'" (ngSubmit)="resetPassword()">
+        <h2>Réinitialiser le mot de passe</h2>
+        <input [(ngModel)]="password" name="password" placeholder="Nouveau mot de passe" type="password" required>
+        <input [(ngModel)]="confirm" name="confirm" placeholder="Confirmer le mot de passe" type="password" required>
+        <button type="submit">Réinitialiser</button>
+      </form>
+    </ng-container>
+  </div>
+
+  <!-- Liens EN DEHORS du fond blanc -->
+  <div class="external-links">
+    <!-- Liens pour la vue login -->
+    <div *ngIf="view === 'login'">
+      <p><a (click)="goTo('forgot')">Mot de passe oublié ?</a></p>
+      <p class="register-link">Vous n'avez pas de compte ? 
+        <a (click)="navigateToRegister()">S'inscrire</a>
+      </p>
+    </div>
+
+    <!-- Lien pour la vue mot de passe oublié -->
+    <p *ngIf="view === 'forgot'"><a (click)="goTo('login')">← Retour à la connexion</a></p>
+  </div>
+
+  <!-- Message d'état -->
+  <p *ngIf="message" class="status-message">{{ message }}</p>
+</div>

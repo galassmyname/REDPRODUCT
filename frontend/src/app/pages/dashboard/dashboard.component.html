@@ -1,0 +1,17 @@
+<div class="dashboard-main-content">
+  <div class="dashboard-header-section">
+    <h1 class="welcome-header">Bienvenue sur RED Product</h1>
+    <p class="subtitle">Lorem ipsum dolor sit amet consectetur</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card" *ngFor="let card of dashboardCards">
+      <div class="card-icon" [ngClass]="card.iconClass"></div>
+      <div class="card-content">
+        <h2 class="card-number">{{ card.number }}</h2>
+        <p class="card-title">{{ card.title }}</p>
+        <p class="card-subtitle">{{ card.subtitle }}</p>
+      </div>
+    </div>
+  </div>
+</div>
