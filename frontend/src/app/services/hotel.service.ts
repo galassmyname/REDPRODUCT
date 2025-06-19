@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
   providedIn: 'root'
 })
 export class HotelService {
-  private apiUrl = 'http://localhost:5000/api/hotels';
+  private apiUrl = 'https://redproduct.onrender.com/api/hotels';
 
   constructor(private http: HttpClient) { }
 

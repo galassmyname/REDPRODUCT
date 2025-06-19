@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private baseUrl = 'http://localhost:5000/api/auth';
+  private baseUrl = 'https://redproduct.onrender.com/api/auth';
   private tokenKey = 'auth_token';
   private userKey = 'user_data';
 
