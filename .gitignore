@@ -1,0 +1,14 @@
+# Ignorer node_modules partout
+**/node_modules/
+
+# Ignorer dossier build Angular
+**/dist/
+
+# Ignorer fichiers d'environnements
+**/.env
+
+# Fichiers logs, temp, macOS, Windows
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
