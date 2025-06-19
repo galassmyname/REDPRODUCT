@@ -1,34 +1,64 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const dotenv = require('dotenv');
-const authRoutes = require('./routes/auth.routes');
-const hotelRoutes = require('./routes/hotel.routes');
 const path = require('path');
 
-dotenv.config();
+// Routes
+const authRoutes = require('./routes/auth.routes');
+const hotelRoutes = require('./routes/hotel.routes');
 
+// Initialisation de l'app Express
 const app = express();
 
-// Middleware CORS avec configuration spécifique
+// =============================================
+// 1. Configuration CORS (Critique pour Render)
+// =============================================
 app.use(cors({
-  origin: 'http://localhost:4200', // L'URL de ton frontend Angular
-  credentials: true
+  origin: [
+    process.env.FRONTEND_URL, // Ex: 'https://votre-frontend.onrender.com'
+    'http://localhost:4200'   // Dev Angular
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'] // Méthodes autorisées
 }));
 
-// Middleware pour parser le JSON
-app.use(express.json());
+// =============================================
+// 2. Middlewares
+// =============================================
+app.use(express.json()); // Pour parser le JSON
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Fichiers statiques
 
-// Connexion à MongoDB
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log('Connecté à MongoDB'))
-  .catch(err => console.error('Erreur de connexion à MongoDB:', err));
+// =============================================
+// 3. Connexion MongoDB (Critique pour Render)
+// =============================================
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log('✅ Connecté à MongoDB'))
+  .catch(err => console.error('❌ Erreur MongoDB:', err));
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/hotels', hotelRoutes);
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// =============================================
+// 4. Routes (Vérifiez les chemins !)
+// =============================================
+app.use('/api/auth', authRoutes); // Toutes les routes /api/auth/*
+app.use('/api/hotels', hotelRoutes); // Toutes les routes /api/hotels/*
 
-// Démarrage du serveur
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Serveur démarré sur le port ${PORT}`));
+// =============================================
+// 5. Gestion des erreurs 404 (Important pour Render)
+// =============================================
+app.use((req, res) => {
+  res.status(404).json({ message: 'Endpoint non trouvé' });
+});
+
+// =============================================
+// 6. Configuration du port pour Render (Critique !)
+// =============================================
+const PORT = process.env.PORT || 10000; // Render utilise le port 10000
+
+app.listen(PORT, () => {
+  console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+  console.log(`🔗 URL backend: http://localhost:${PORT}`);
+  console.log(`🌍 Frontend autorisé: ${process.env.FRONTEND_URL || 'http://localhost:4200'}`);
+});
