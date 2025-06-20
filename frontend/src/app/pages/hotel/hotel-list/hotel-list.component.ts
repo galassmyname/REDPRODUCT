@@ -70,10 +70,10 @@ export class HotelListComponent implements OnInit {
     }
     
     if (hotel.photos[0].startsWith('/uploads/')) {
-      return `http://localhost:5000${hotel.photos[0]}`;
+      return `https://redproduct.onrender.com${hotel.photos[0]}`;
     }
     
-    return `http://localhost:5000/uploads/${hotel.photos[0]}`;
+    return `https://redproduct.onrender.com/uploads/${hotel.photos[0]}`;
   }
 
   onImageError(event: Event): void {
