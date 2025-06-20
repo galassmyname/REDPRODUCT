@@ -9,21 +9,21 @@ import { AuthGuard } from './guards/auth.guards';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Redirection par défaut
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  // Dans votre fichier de routage Angular (app-routing.module.ts par exemple)
-// Dans app.routes.ts
-{ path: 'reset-password/:token', component: LoginComponent },// Supprimez le préfixe `/auth/`
+  { path: 'reset-password/:token', component: LoginComponent },
+  
+  // Zone authentifiée
   { 
-    path: '', 
+    path: '',
     component: MainLayoutComponent,
     canActivate: [AuthGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'hotels', component: HotelListComponent },
-      { path: 'hotels/new', component: HotelFormComponent }
-      
+      { path: 'hotels/new', component: HotelFormComponent },
+      { path: '**', redirectTo: 'dashboard' } // Fallback pour les 404 internes
     ]
   }
 ];
