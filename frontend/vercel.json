@@ -1,12 +1,16 @@
+
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://redproduct.onrender.com/api/$1"
-    },
+      "src": "dist/frontend/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
