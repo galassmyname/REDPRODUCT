@@ -116,7 +116,7 @@ exports.getHotels = async (req, res) => {
             // Si le chemin commence déjà par /uploads/, ne rien changer
             if (photo.startsWith('/uploads/')) return photo;
             // Sinon, ajouter le préfixe
-            return `http://localhost:5000/uploads/${photo.replace('uploads/', '')}`;
+            return `https://redproduct.onrender.com/uploadhs/${photo.replace('uploads/', '')}`;
           })
         };
       }
