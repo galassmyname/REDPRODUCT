@@ -13,7 +13,7 @@ import { AuthService } from '../../services/auth.service'; // Adjust path if nee
     CommonModule,
     FormsModule,
     SidebarComponent,
-    DashboardComponent,
+  
     RouterOutlet
   ],
   templateUrl: './main-layout.component.html',
