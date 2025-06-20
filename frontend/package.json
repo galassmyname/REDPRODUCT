@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.0.0",
   "scripts": {
+      "start": "serve dist/frontend -s",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
