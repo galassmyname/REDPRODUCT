@@ -4,7 +4,6 @@
   "scripts": {
       "start": "serve dist/frontend -s",
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
